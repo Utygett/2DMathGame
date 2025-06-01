@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var s_max_speed = 40
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var direction = get_direction_to_player()
 	velocity = s_max_speed * direction
 	move_and_slide()
@@ -15,5 +15,5 @@ func get_direction_to_player():
 	return Vector2.ZERO
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	queue_free()
