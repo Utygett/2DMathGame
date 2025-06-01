@@ -179,7 +179,8 @@ shape = SubResource("CircleShape2D_cm2cf")
 position = Vector2(0, -8.205)
 sprite_frames = SubResource("SpriteFrames_fspl2")
 animation = &"moveUp"
-frame_progress = 0.0112976
+frame = 1
+frame_progress = 0.106416
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -8.205)

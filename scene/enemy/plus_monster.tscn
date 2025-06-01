@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://tt7okqdoytfq"]
+[gd_scene load_steps=9 format=3 uid="uid://tt7okqdoytfq"]
 
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/enemy/plus.png" id="1_cq7eo"]
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/enemy/plus_monster.gd" id="1_tpq12"]
 [ext_resource type="Texture2D" uid="uid://217hux3vas2c" path="res://scene/enemy/plus_1.png" id="2_tpq12"]
 [ext_resource type="Texture2D" uid="uid://davroneehb0pl" path="res://scene/enemy/plus_step_left.png" id="3_ohx3b"]
 [ext_resource type="Texture2D" uid="uid://l1nh11mhvjv0" path="res://scene/enemy/plus_step_right.png" id="4_21ypb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpq12"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8fhh"]
 animations = [{
@@ -37,6 +39,15 @@ animations = [{
 collision_layer = 0
 script = ExtResource("1_tpq12")
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -11)
+scale = Vector2(1.795, 1.795)
+shape = SubResource("CircleShape2D_tpq12")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_j8fhh")
@@ -49,3 +60,5 @@ frame_progress = 0.0108793
 position = Vector2(0, -11)
 scale = Vector2(1.30284, 1.36165)
 shape = SubResource("CircleShape2D_w7gcb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
