@@ -17,3 +17,6 @@ position = Vector2(180, 130)
 
 [node name="plus_monster" parent="." instance=ExtResource("2_p3y32")]
 position = Vector2(338, 206)
+
+[node name="plus_monster2" parent="." instance=ExtResource("2_p3y32")]
+position = Vector2(205, 332)

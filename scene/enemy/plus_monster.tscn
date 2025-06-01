@@ -33,7 +33,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7gcb"]
 
-[node name="plus_monster" type="CharacterBody2D"]
+[node name="plus_monster" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 0
 script = ExtResource("1_tpq12")
 
