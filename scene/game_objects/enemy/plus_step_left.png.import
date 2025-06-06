@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ebuh1lhqk7y"
-path="res://.godot/imported/plus.png-acb700674c31f66f4264e4ee359a4fdc.ctex"
+uid="uid://davroneehb0pl"
+path="res://.godot/imported/plus_step_left.png-4ecf14decaed6775fb942c1da288b4b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/enemy/plus.png"
-dest_files=["res://.godot/imported/plus.png-acb700674c31f66f4264e4ee359a4fdc.ctex"]
+source_file="res://scene/game_objects/enemy/plus_step_left.png"
+dest_files=["res://.godot/imported/plus_step_left.png-4ecf14decaed6775fb942c1da288b4b2.ctex"]
 
 [params]
 

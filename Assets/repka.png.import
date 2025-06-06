@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l1nh11mhvjv0"
-path="res://.godot/imported/plus_step_right.png-0258c6dd95b30517e4008dcf8b6abb79.ctex"
+uid="uid://cxlx60utnd881"
+path="res://.godot/imported/repka.png-debe61b6e96d1eac20ba686373810ea3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/enemy/plus_step_right.png"
-dest_files=["res://.godot/imported/plus_step_right.png-0258c6dd95b30517e4008dcf8b6abb79.ctex"]
+source_file="res://Assets/repka.png"
+dest_files=["res://.godot/imported/repka.png-debe61b6e96d1eac20ba686373810ea3.ctex"]
 
 [params]
 

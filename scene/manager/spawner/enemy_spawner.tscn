@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vkbtiablo3tt"]
 
-[ext_resource type="Script" uid="uid://cmkku6gcpbrv7" path="res://scene/spawner/enemy_spawner.gd" id="1_hp8sc"]
-[ext_resource type="PackedScene" uid="uid://tt7okqdoytfq" path="res://scene/enemy/plus_monster.tscn" id="2_0jpma"]
+[ext_resource type="Script" uid="uid://cmkku6gcpbrv7" path="res://scene/manager/spawner/enemy_spawner.gd" id="1_hp8sc"]
+[ext_resource type="PackedScene" uid="uid://tt7okqdoytfq" path="res://scene/game_objects/enemy/plus_monster.tscn" id="2_0jpma"]
 
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_hp8sc")
