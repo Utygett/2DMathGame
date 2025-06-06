@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 var s_max_speed = 100
+var s_acceleration = 0.15
 
 func _process(_delta: float) -> void:
 	var movement = movement_vector()
 	var direction = movement.normalized()
-	velocity = s_max_speed * direction
+	var target_velocity = s_max_speed * direction
+	
+	velocity = velocity.lerp(target_velocity, s_acceleration)
 	move_and_slide()
 
 func movement_vector():
