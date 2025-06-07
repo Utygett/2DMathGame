@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 var s_max_speed = 40
 
+@onready var health_component: Node = $HealthComponent
+
+
+
 func _process(_delta: float) -> void:
 	var direction = get_direction_to_player()
 	velocity = s_max_speed * direction
@@ -16,4 +20,4 @@ func get_direction_to_player():
 
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
-	queue_free()
+	health_component.take_damage(5)
