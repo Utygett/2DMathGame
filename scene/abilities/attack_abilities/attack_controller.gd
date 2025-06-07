@@ -1,12 +1,12 @@
-extends Timer
+extends Node
 
 @export var attack_ability: PackedScene
 
 var s_attack_range = 100
-var s_damage = 10
+var s_damage = 5
 
 
-func _on_timeout() -> void:
+func _on_timer_timeout() -> void:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
@@ -35,4 +35,5 @@ func _on_timeout() -> void:
 	attack_instance.global_position = (enemy_pos + player_pos) / 2
 	
 	attack_instance.look_at(enemy_pos)
+	
 	
