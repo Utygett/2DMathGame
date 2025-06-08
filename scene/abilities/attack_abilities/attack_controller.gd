@@ -2,9 +2,15 @@ extends Node
 
 @export var attack_ability: PackedScene
 
+@onready var timer: Timer = $Timer
+
 var s_attack_range = 100
 var s_damage = 5
+var s_default_attack_speed
 
+func _ready() -> void:
+	Global.ability_upgrage_added.connect(on_upgrade_added)
+	s_default_attack_speed = timer.wait_time
 
 func _on_timer_timeout() -> void:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
@@ -36,4 +42,12 @@ func _on_timer_timeout() -> void:
 	
 	attack_instance.look_at(enemy_pos)
 	
+
+func on_upgrade_added(upgrade:AbilityUpgrade, current_upgrades: Dictionary):
+	if upgrade.id != "axe_rate":
+		return
 	
+	var upgrade_percent = current_upgrades["axe_rate"]["quantity"] * .1
+	timer.wait_time = max(s_default_attack_speed * (1 - upgrade_percent), 0.1)
+	timer.start()
+	print(timer.wait_time)

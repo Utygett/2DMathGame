@@ -29,7 +29,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		}
 	else:
 		cur_upgrdaes[upgrade.id]["quantity"] += 1
-	print(cur_upgrdaes)
+	Global.ability_upgrage_added.emit(upgrade, cur_upgrdaes)
 		
 	
 func on_upgrade_selected(upgrade:AbilityUpgrade):
