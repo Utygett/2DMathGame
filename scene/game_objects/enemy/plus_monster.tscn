@@ -39,7 +39,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7gcb"]
 
 [node name="plus_monster" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 0
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_tpq12")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_4vnmi")]
@@ -64,6 +65,6 @@ frame = 1
 frame_progress = 0.0108793
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
-scale = Vector2(1.30284, 1.36165)
+position = Vector2(0, -7)
+scale = Vector2(0.775783, 0.737324)
 shape = SubResource("CircleShape2D_w7gcb")

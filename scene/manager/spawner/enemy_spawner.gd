@@ -12,7 +12,7 @@ func _on_timer_timeout() -> void:
 	var spawn_pos = player.global_position + (random_direction * random_distance)
 	
 	var enemy = plus_monster_scene.instantiate() as Node2D
-	
-	get_parent().add_child(enemy)
+	var back_layer = get_tree().get_first_node_in_group("back_layer")
+	back_layer.add_child(enemy)
 	
 	enemy.global_position = spawn_pos
