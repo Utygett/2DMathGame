@@ -20,3 +20,5 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Decription of the current card"
 autowrap_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -6,7 +6,7 @@ signal level_up (cur_level)
 
 var s_current_exp = 0
 var target_exp	 = 1
-var target_after_lvlup = 5
+var target_after_lvlup = 1
 var current_level = 1
 
 func _ready() -> void:
