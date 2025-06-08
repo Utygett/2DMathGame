@@ -1,7 +1,8 @@
 extends Node
 class_name ExpirienceManager
 
-signal  expirince_update (s_current_exp:float, target_exp:float)
+signal expirince_update (s_current_exp:float, target_exp:float)
+signal level_up (cur_level)
 
 var s_current_exp = 0
 var target_exp	 = 5
@@ -20,5 +21,5 @@ func on_exp_bottle_collected(expirience):
 		current_level += 1
 		s_current_exp = 0
 		target_exp += target_after_lvlup
-		print(current_level)
 		expirince_update.emit(s_current_exp, target_exp)
+		level_up.emit(current_level)
