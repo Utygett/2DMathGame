@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tt7okqdoytfq"]
+[gd_scene load_steps=13 format=3 uid="uid://tt7okqdoytfq"]
 
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_cq7eo"]
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_tpq12"]
@@ -38,6 +38,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7gcb"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vq7rm"]
+
 [node name="plus_monster" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
@@ -68,3 +70,11 @@ frame_progress = 0.0108793
 position = Vector2(0, -7)
 scale = Vector2(0.775783, 0.737324)
 shape = SubResource("CircleShape2D_w7gcb")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_vq7rm")
