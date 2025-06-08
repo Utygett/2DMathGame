@@ -30,7 +30,6 @@ func check_if_damage():
 		return
 	health_component.take_damage(1)
 	grace_period.start()
-	print(health_component.current_health)
 
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	enemies_colliding += 1
@@ -40,7 +39,7 @@ func health_update():
 	progress_bar.value = health_component.get_health_value()
 
 func _on_player_hurt_box_area_exited(area: Area2D) -> void:
-	enemies_colliding += 1
+	enemies_colliding -= 1
 
 func on_died():
 	queue_free()
