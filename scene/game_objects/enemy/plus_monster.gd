@@ -4,7 +4,8 @@ var s_max_speed = 40
 
 @onready var health_component: Node = $HealthComponent
 
-
+func _ready() -> void:
+	health_component.died.connect(on_died)
 
 func _process(_delta: float) -> void:
 	var direction = get_direction_to_player()
@@ -17,3 +18,6 @@ func get_direction_to_player():
 	if player != null:  
 		return (player.global_position - self.global_position).normalized()
 	return Vector2.ZERO
+	
+func on_died():
+	queue_free()

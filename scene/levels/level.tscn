@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bmu76r8k1gj0q"]
+[gd_scene load_steps=12 format=4 uid="uid://bmu76r8k1gj0q"]
 
 [ext_resource type="TileSet" uid="uid://duusb0104ywfi" path="res://resources/green_tile_set.tres" id="1_rjcmn"]
 [ext_resource type="PackedScene" uid="uid://blj2m36s57dn2" path="res://scene/manager/arena_time_manager.tscn" id="1_wqpoj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dp8haqeyk3umd" path="res://scene/manager/upgrade_manager.tscn" id="6_htqai"]
 [ext_resource type="Script" uid="uid://hgvfr8fdr2ys" path="res://resources/upgrades/ability_rate.gd" id="7_ahd0t"]
 [ext_resource type="Resource" uid="uid://dtvb6gfvv5cpn" path="res://resources/upgrades/axe_rate.tres" id="8_v2yk5"]
+[ext_resource type="Script" uid="uid://lw5xbjb22i1q" path="res://scene/levels/camera_2d.gd" id="11_v2yk5"]
 
 [node name="Level" type="Node"]
 
@@ -41,4 +42,10 @@ tile_set = ExtResource("1_rjcmn")
 y_sort_enabled = true
 
 [node name="Player" parent="Back" instance=ExtResource("2_uq4q8")]
+unique_name_in_owner = true
 position = Vector2(180, 130)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -8.205)
+position_smoothing_enabled = true
+script = ExtResource("11_v2yk5")
