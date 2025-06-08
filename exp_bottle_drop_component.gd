@@ -2,7 +2,7 @@ extends Node
 
 @export var exp_bottle_scene: PackedScene
 @export var health_component: Node
-@export var drop_percent = .5
+@export var drop_percent = 0
 func _ready() -> void:
 	(health_component as HealthComponent).died.connect(on_died)
 	
