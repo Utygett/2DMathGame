@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://88tsre480nut"]
+[gd_scene load_steps=28 format=3 uid="uid://88tsre480nut"]
 
 [ext_resource type="Script" uid="uid://bmbk6n3mbp5a0" path="res://scene/game_objects/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://bqlq3w1am4qv" path="res://scene/game_objects/player/Basic Charakter Spritesheet.png" id="1_v7pse"]
 [ext_resource type="PackedScene" uid="uid://n82yrefnff2a" path="res://scene/abilities/attack_abilities/attack_controller.tscn" id="2_6smn3"]
 [ext_resource type="Script" uid="uid://byuold0li0v8p" path="res://scene/components/health_component.gd" id="3_6qri3"]
+[ext_resource type="PackedScene" uid="uid://cwpllysapt7pm" path="res://scene/abilities/axe_ability/axe_ability_controller.tscn" id="3_c7mlt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qri3"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)
@@ -185,6 +186,8 @@ script = ExtResource("1_cm2cf")
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="AttackController" parent="AbilityManager" instance=ExtResource("2_6smn3")]
+
+[node name="AxeAbilityController" parent="AbilityManager" instance=ExtResource("3_c7mlt")]
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_6qri3")
