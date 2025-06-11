@@ -1,0 +1,164 @@
+[gd_scene load_steps=23 format=3 uid="uid://xrr7g0b7dy6e"]
+
+[ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_c5v5s"]
+[ext_resource type="PackedScene" uid="uid://0h7fafr3i0v4" path="res://scene/components/death_component.tscn" id="2_ybf61"]
+[ext_resource type="Texture2D" uid="uid://ds5pracajs8l3" path="res://Assets/sub_monster_solo.png" id="3_1wffr"]
+[ext_resource type="PackedScene" uid="uid://c6r0tf6mkacwi" path="res://scene/components/health_component.tscn" id="4_3u6gk"]
+[ext_resource type="PackedScene" uid="uid://4fsihbm30dar" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_ccmox"]
+[ext_resource type="PackedScene" uid="uid://c1qmoqwncan8" path="res://scene/components/heart_box_component.tscn" id="6_7j8gy"]
+[ext_resource type="PackedScene" uid="uid://b367v2t7a8m7o" path="res://scene/components/movement_component.tscn" id="6_k4k16"]
+[ext_resource type="Texture2D" uid="uid://fdttdhjblihx" path="res://Assets/sub_monster.png" id="7_1wffr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5v5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4k16"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5v5s"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(35, 0, 31, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybf61"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqpip"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u6gk"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(64, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccmox"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(64, 33, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j8gy"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(0, 64, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lynvi"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(34, 96, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52gil"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(0, 96, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myh2c"]
+atlas = ExtResource("7_1wffr")
+region = Rect2(34, 64, 34, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5v5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4k16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5v5s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4k16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5v5s")
+}],
+"loop": true,
+"name": &"moveDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybf61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqpip")
+}],
+"loop": true,
+"name": &"moveLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u6gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccmox")
+}],
+"loop": true,
+"name": &"moveRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j8gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lynvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52gil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myh2c")
+}],
+"loop": true,
+"name": &"moveUp",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybf61"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqpip"]
+
+[node name="SubMonster" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_c5v5s")
+death_scene = ExtResource("2_ybf61")
+sprite = ExtResource("3_1wffr")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_3u6gk")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_ccmox")]
+health_component = NodePath("../HealthComponent")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_k4k16")]
+max_speed = 500
+acceleration = 0.1
+
+[node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_7j8gy")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeartBoxComponent"]
+position = Vector2(0, -11)
+scale = Vector2(1.795, 1.795)
+shape = SubResource("CircleShape2D_c5v5s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_c5v5s")
+animation = &"moveRight"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(0.775783, 0.737324)
+shape = SubResource("CircleShape2D_ybf61")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_fqpip")

@@ -23,7 +23,6 @@ func _process(_delta: float) -> void:
 	
 	velocity = velocity.lerp(target_velocity, s_acceleration)
 	move_and_slide()
-	print(direction)
 	if direction.y < -0.5:
 		animated_sprite_2d.play("moveUp")
 	elif direction.y > 0.5:
