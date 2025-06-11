@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bmbk6n3mbp5a0" path="res://scene/game_objects/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://bqlq3w1am4qv" path="res://scene/game_objects/player/Basic Charakter Spritesheet.png" id="1_v7pse"]
 [ext_resource type="PackedScene" uid="uid://n82yrefnff2a" path="res://scene/abilities/attack_abilities/attack_controller.tscn" id="2_6smn3"]
-[ext_resource type="Script" uid="uid://byuold0li0v8p" path="res://scene/components/health_component.gd" id="3_6qri3"]
+[ext_resource type="PackedScene" uid="uid://c6r0tf6mkacwi" path="res://scene/components/health_component.tscn" id="3_6qri3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qri3"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)
@@ -186,12 +186,10 @@ script = ExtResource("1_cm2cf")
 
 [node name="AttackController" parent="AbilityManager" instance=ExtResource("2_6smn3")]
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("3_6qri3")
-metadata/_custom_type_script = "uid://byuold0li0v8p"
-
 [node name="GracePeriod" type="Timer" parent="."]
 one_shot = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_6qri3")]
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(24, 4)
