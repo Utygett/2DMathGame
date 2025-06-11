@@ -1,9 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://88tsre480nut"]
+[gd_scene load_steps=30 format=3 uid="uid://88tsre480nut"]
 
 [ext_resource type="Script" uid="uid://bmbk6n3mbp5a0" path="res://scene/game_objects/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://bqlq3w1am4qv" path="res://scene/game_objects/player/Basic Charakter Spritesheet.png" id="1_v7pse"]
 [ext_resource type="PackedScene" uid="uid://n82yrefnff2a" path="res://scene/abilities/attack_abilities/attack_controller.tscn" id="2_6smn3"]
 [ext_resource type="PackedScene" uid="uid://c6r0tf6mkacwi" path="res://scene/components/health_component.tscn" id="3_6qri3"]
+[ext_resource type="PackedScene" uid="uid://brgg15ar3k7g4" path="res://scene/components/flash_component.tscn" id="4_jxsrc"]
+[ext_resource type="Shader" uid="uid://d20q8d20cjds" path="res://scene/components/health_component.gdshader" id="5_4vals"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48qb4"]
+resource_local_to_scene = true
+shader = ExtResource("5_4vals")
+shader_parameter/percent = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qri3"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)
@@ -190,6 +197,11 @@ script = ExtResource("1_cm2cf")
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_6qri3")]
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_jxsrc")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_48qb4")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(24, 4)

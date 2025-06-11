@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tt7okqdoytfq"]
+[gd_scene load_steps=16 format=3 uid="uid://tt7okqdoytfq"]
 
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_cq7eo"]
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_tpq12"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c1qmoqwncan8" path="res://scene/components/heart_box_component.tscn" id="4_v7wnq"]
 [ext_resource type="PackedScene" uid="uid://c6r0tf6mkacwi" path="res://scene/components/health_component.tscn" id="6_4vnmi"]
 [ext_resource type="PackedScene" uid="uid://b367v2t7a8m7o" path="res://scene/components/movement_component.tscn" id="6_8esyc"]
+[ext_resource type="PackedScene" uid="uid://brgg15ar3k7g4" path="res://scene/components/flash_component.tscn" id="11_jisnx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7wnq"]
 
@@ -88,6 +89,10 @@ sprite = ExtResource("1_cq7eo")
 health_component = NodePath("../HealthComponent")
 
 [node name="MovementComponent" parent="." instance=ExtResource("6_8esyc")]
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_jisnx")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
 
 [node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_v7wnq")]
 health_component = NodePath("../HealthComponent")

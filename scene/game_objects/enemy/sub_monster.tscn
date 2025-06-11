@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://xrr7g0b7dy6e"]
+[gd_scene load_steps=26 format=3 uid="uid://xrr7g0b7dy6e"]
 
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_c5v5s"]
 [ext_resource type="PackedScene" uid="uid://0h7fafr3i0v4" path="res://scene/components/death_component.tscn" id="2_ybf61"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://c1qmoqwncan8" path="res://scene/components/heart_box_component.tscn" id="6_7j8gy"]
 [ext_resource type="PackedScene" uid="uid://b367v2t7a8m7o" path="res://scene/components/movement_component.tscn" id="6_k4k16"]
 [ext_resource type="Texture2D" uid="uid://fdttdhjblihx" path="res://Assets/sub_monster.png" id="7_1wffr"]
+[ext_resource type="PackedScene" uid="uid://brgg15ar3k7g4" path="res://scene/components/flash_component.tscn" id="7_ybf61"]
+[ext_resource type="Shader" uid="uid://d20q8d20cjds" path="res://scene/components/health_component.gdshader" id="8_fqpip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u6gk"]
+resource_local_to_scene = true
+shader = ExtResource("8_fqpip")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5v5s"]
 
@@ -134,6 +141,11 @@ health_component = NodePath("../HealthComponent")
 [node name="MovementComponent" parent="." instance=ExtResource("6_k4k16")]
 max_speed = 500
 acceleration = 0.1
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_ybf61")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_3u6gk")
 
 [node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_7j8gy")]
 health_component = NodePath("../HealthComponent")
