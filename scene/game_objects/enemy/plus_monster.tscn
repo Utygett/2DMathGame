@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://tt7okqdoytfq"]
+[gd_scene load_steps=14 format=3 uid="uid://tt7okqdoytfq"]
 
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_cq7eo"]
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_tpq12"]
 [ext_resource type="Texture2D" uid="uid://217hux3vas2c" path="res://scene/game_objects/enemy/plus_1.png" id="2_tpq12"]
+[ext_resource type="PackedScene" uid="uid://0h7fafr3i0v4" path="res://scene/components/death_component.tscn" id="2_vq7rm"]
 [ext_resource type="PackedScene" uid="uid://4fsihbm30dar" path="res://scene/components/exp_bottle_drop_component.tscn" id="3_igcb5"]
 [ext_resource type="Texture2D" uid="uid://davroneehb0pl" path="res://scene/game_objects/enemy/plus_step_left.png" id="3_ohx3b"]
 [ext_resource type="Texture2D" uid="uid://l1nh11mhvjv0" path="res://scene/game_objects/enemy/plus_step_right.png" id="4_21ypb"]
@@ -44,6 +45,8 @@ animations = [{
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_tpq12")
+death_scene = ExtResource("2_vq7rm")
+sprite = ExtResource("1_cq7eo")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_4vnmi")]
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://0h7fafr3i0v4"]
+[gd_scene load_steps=9 format=3 uid="uid://0h7fafr3i0v4"]
 
+[ext_resource type="Script" uid="uid://bbsiaoo7fcn87" path="res://scene/components/death_component.gd" id="1_m7agx"]
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_xdsv3"]
 
 [sub_resource type="Animation" id="Animation_xdsv3"]
@@ -71,6 +72,7 @@ gravity = Vector3(0, 400, 0)
 alpha_curve = SubResource("CurveTexture_m7agx")
 
 [node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_m7agx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -82,6 +84,7 @@ autoplay = "death"
 position = Vector2(0, -12)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+unique_name_in_owner = true
 emitting = false
 amount = 1
 texture = ExtResource("1_xdsv3")
