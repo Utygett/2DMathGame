@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://tt7okqdoytfq"]
+
+[ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_cq7eo"]
+[ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_tpq12"]
+[ext_resource type="Texture2D" uid="uid://217hux3vas2c" path="res://scene/game_objects/enemy/plus_1.png" id="2_tpq12"]
+[ext_resource type="PackedScene" uid="uid://0h7fafr3i0v4" path="res://scene/components/death_component.tscn" id="2_vq7rm"]
+[ext_resource type="PackedScene" uid="uid://4fsihbm30dar" path="res://scene/components/exp_bottle_drop_component.tscn" id="3_igcb5"]
+[ext_resource type="Texture2D" uid="uid://davroneehb0pl" path="res://scene/game_objects/enemy/plus_step_left.png" id="3_ohx3b"]
+[ext_resource type="Texture2D" uid="uid://l1nh11mhvjv0" path="res://scene/game_objects/enemy/plus_step_right.png" id="4_21ypb"]
+[ext_resource type="PackedScene" uid="uid://c1qmoqwncan8" path="res://scene/components/heart_box_component.tscn" id="4_v7wnq"]
+[ext_resource type="PackedScene" uid="uid://c6r0tf6mkacwi" path="res://scene/components/health_component.tscn" id="6_4vnmi"]
+[ext_resource type="PackedScene" uid="uid://b367v2t7a8m7o" path="res://scene/components/movement_component.tscn" id="6_8esyc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7wnq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8fhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cq7eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tpq12")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"moveDown",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"moveLeft",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"moveRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ohx3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_21ypb")
+}],
+"loop": true,
+"name": &"moveUp",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7gcb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vq7rm"]
+
+[node name="plus_monster" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_tpq12")
+death_scene = ExtResource("2_vq7rm")
+sprite = ExtResource("1_cq7eo")
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_4vnmi")]
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_igcb5")]
+health_component = NodePath("../HealthComponent")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_8esyc")]
+
+[node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_v7wnq")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeartBoxComponent"]
+position = Vector2(0, -11)
+scale = Vector2(1.795, 1.795)
+shape = SubResource("CircleShape2D_v7wnq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_j8fhh")
+animation = &"moveRight"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(0.775783, 0.737324)
+shape = SubResource("CircleShape2D_w7gcb")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_vq7rm")
