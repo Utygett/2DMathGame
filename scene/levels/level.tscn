@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bmu76r8k1gj0q"]
+[gd_scene load_steps=13 format=4 uid="uid://bmu76r8k1gj0q"]
 
 [ext_resource type="Script" uid="uid://dkbljtnp1y1xp" path="res://scene/levels/level.gd" id="1_qvpeq"]
 [ext_resource type="TileSet" uid="uid://duusb0104ywfi" path="res://resources/green_tile_set.tres" id="1_rjcmn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://vkbtiablo3tt" path="res://scene/manager/spawner/enemy_spawner.tscn" id="3_uq4q8"]
 [ext_resource type="PackedScene" uid="uid://baakhegcog8ga" path="res://scene/ui/arena_tine_ui.tscn" id="4_p3y32"]
 [ext_resource type="PackedScene" uid="uid://dp8haqeyk3umd" path="res://scene/manager/upgrade_manager.tscn" id="6_htqai"]
+[ext_resource type="PackedScene" uid="uid://xrr7g0b7dy6e" path="res://scene/game_objects/enemy/sub_monster.tscn" id="8_qvpeq"]
 [ext_resource type="Script" uid="uid://lw5xbjb22i1q" path="res://scene/levels/camera_2d.gd" id="11_v2yk5"]
 
 [node name="Level" type="Node"]
@@ -28,6 +29,7 @@ exp_manager = NodePath("../ExpirienceManager")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("3_uq4q8")]
 arena_time_manager = NodePath("../ArenaTimeManager")
+sub_monster_scene = ExtResource("8_qvpeq")
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("exp_manager") instance=ExtResource("6_htqai")]
 exp_manager = NodePath("../ExpirienceManager")
