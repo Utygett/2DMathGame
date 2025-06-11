@@ -23,15 +23,17 @@ func _process(_delta: float) -> void:
 	
 	velocity = velocity.lerp(target_velocity, s_acceleration)
 	move_and_slide()
-	
-	if direction.x != 0 || direction.y != 0:
+	print(direction)
+	if direction.y < -0.5:
 		animated_sprite_2d.play("moveUp")
+	elif direction.y > 0.5:
+		animated_sprite_2d.play("moveDown")
+	elif direction.x > 0.5:
+		animated_sprite_2d.play("moveRight")
+	elif direction.x < -0.5:
+		animated_sprite_2d.play("moveLeft")
 	else:
 		animated_sprite_2d.play("idleUp")
-	var face_sign = sign(direction.y)
-	if face_sign !=0:
-		animated_sprite_2d.scale.x = face_sign
-	
 
 
 func movement_vector():

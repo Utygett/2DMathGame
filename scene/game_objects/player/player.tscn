@@ -225,9 +225,8 @@ shape = SubResource("CircleShape2D_cm2cf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(0, -8.205)
 sprite_frames = SubResource("SpriteFrames_fspl2")
-animation = &"moveUp"
-frame = 1
-frame_progress = 0.106416
+animation = &"moveRight"
+frame_progress = 0.826839
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 collision_layer = 0
