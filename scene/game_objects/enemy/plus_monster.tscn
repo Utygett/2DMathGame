@@ -28,13 +28,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("1_cq7eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_21ypb")
+}],
+"loop": true,
+"name": &"moveDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cq7eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_21ypb")
+}],
+"loop": true,
+"name": &"moveLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cq7eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_21ypb")
+}],
+"loop": true,
+"name": &"moveRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_ohx3b")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_21ypb")
 }],
 "loop": true,
-"name": &"run",
+"name": &"moveUp",
 "speed": 5.0
 }]
 
@@ -65,12 +98,11 @@ scale = Vector2(1.795, 1.795)
 shape = SubResource("CircleShape2D_v7wnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_j8fhh")
 animation = &"idle"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.0108793
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
