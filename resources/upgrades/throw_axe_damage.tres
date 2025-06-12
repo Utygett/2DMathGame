@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://b7otgu5uvjloh"]
+
+[ext_resource type="Script" uid="uid://hgvfr8fdr2ys" path="res://resources/upgrades/ability_rate.gd" id="1_pt1n8"]
+
+[resource]
+script = ExtResource("1_pt1n8")
+id = "throw_axe_damage"
+max_quantity = 0
+name = "Throw Axe Damage"
+description = "Inscreases throw axe attack damage by 12%"

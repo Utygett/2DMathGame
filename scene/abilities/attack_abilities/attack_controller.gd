@@ -6,6 +6,7 @@ extends Node
 
 var s_attack_range = 100
 var s_damage = 5
+var s_damage_multiplier = 1.0
 var s_default_attack_speed
 
 func _ready() -> void:
@@ -38,7 +39,7 @@ func _on_timer_timeout() -> void:
 	front_layer.add_child(attack_instance)
 	#attack_instance.hit_box_component = axe
 	
-	attack_instance.hit_box_component.damage = s_damage
+	attack_instance.hit_box_component.damage = s_damage * s_damage_multiplier
 	
 	attack_instance.global_position = (enemy_pos + player_pos) / 2
 	
@@ -46,9 +47,9 @@ func _on_timer_timeout() -> void:
 	
 
 func on_upgrade_added(upgrade:AbilityUpgrade, current_upgrades: Dictionary):
-	if upgrade.id != "axe_rate":
-		return
-	
-	var upgrade_percent = current_upgrades["axe_rate"]["quantity"] * .1
-	timer.wait_time = max(s_default_attack_speed * (1 - upgrade_percent), 0.1)
-	timer.start()
+	if upgrade.id == "axe_rate":
+		var upgrade_percent = current_upgrades["axe_rate"]["quantity"] * .1
+		timer.wait_time = max(s_default_attack_speed * (1 - upgrade_percent), 0.1)
+		timer.start()
+	elif upgrade.id == "axe_damage":
+		s_damage_multiplier = 1 + (current_upgrades["axe_damage"]["quantity"] * 0.15)

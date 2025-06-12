@@ -1,12 +1,21 @@
 extends Node
 
 @export var exp_manager: ExpirienceManager
-@export var upgrade_pool: Array[AbilityUpgrade]
 @export var upgrade_screen_scene: PackedScene
+
+var upgrade_pool: UpgradePool = UpgradePool.new()
+
+var upgrade_axe_rate = preload("res://resources/upgrades/axe_rate.tres")
+var upgrade_throw_axe = preload("res://resources/upgrades/throw_axe.tres")
+var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
+var upgrade_throw_axe_damage = preload("res://resources/upgrades/throw_axe_damage.tres")
 
 var cur_upgrdaes = {}
 
 func _ready() -> void:
+	upgrade_pool.add_upgrade(upgrade_axe_rate, 10)
+	upgrade_pool.add_upgrade(upgrade_throw_axe, 10)
+	upgrade_pool.add_upgrade(upgrade_axe_damage, 10)
 	exp_manager.level_up.connect(on_level_up)
 	
 	
@@ -19,24 +28,31 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		}
 	else:
 		cur_upgrdaes[upgrade.id]["quantity"] += 1
+		
+	update_upgrade_pool(upgrade)
+	
 	Global.ability_upgrage_added.emit(upgrade, cur_upgrdaes)
 	
 	if upgrade.max_quantity > 0:
 		var current_quantity = cur_upgrdaes[upgrade.id]["quantity"]
 		if current_quantity == upgrade.max_quantity:
-			upgrade_pool = upgrade_pool.filter(func(pool_upgrade): return pool_upgrade.id != upgrade.id) 
+			upgrade_pool.remove_upgrade(upgrade)
 		
 	
 
+func update_upgrade_pool(chosen_upgrade:AbilityUpgrade):
+	if chosen_upgrade.id == upgrade_throw_axe.id:
+		upgrade_pool.add_upgrade(upgrade_throw_axe_damage, 10)
+
+
 func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade]
-	var pool_copy = upgrade_pool.duplicate()
 	for i in 2:
-		if pool_copy.size() == 0:
+		if upgrade_pool.upgrades.size() == chosen_upgrades.size():
 			break
-		var chosen_upgrade = pool_copy.pick_random() as AbilityUpgrade
+		var chosen_upgrade = upgrade_pool.pick_upgrade(chosen_upgrades) as AbilityUpgrade
 		chosen_upgrades.append(chosen_upgrade)
-		pool_copy = pool_copy.filter(func(upgrade): return upgrade.id != chosen_upgrade.id)
+		
 		
 	return chosen_upgrades
 
