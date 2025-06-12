@@ -4,13 +4,14 @@ extends CharacterBody2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var ability_manager: Node = $AbilityManager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var movement_component: Node = $MovementComponent
 
-
-var s_max_speed = 100
-var s_acceleration = 0.15
+	
 var enemies_colliding = 0
+var base_speed = 0
 
 func _ready() -> void:
+	base_speed = movement_component.max_speed
 	health_component.died.connect(on_died)
 	health_component.health_change.connect(on_health_changed)
 	Global.ability_upgrage_added.connect(on_ability_upgrade_added)
@@ -19,9 +20,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var movement = movement_vector()
 	var direction = movement.normalized()
-	var target_velocity = s_max_speed * direction
 	
-	velocity = velocity.lerp(target_velocity, s_acceleration)
+	velocity = movement_component.accelerate_to_direction(direction)
 	move_and_slide()
 	if direction.y < -0.5:
 		animated_sprite_2d.play("moveUp")
@@ -67,8 +67,9 @@ func _on_grace_period_timeout() -> void:
 	check_if_damage()
 
 func on_ability_upgrade_added(upgrade:AbilityUpgrade, current_upgrades: Dictionary):
-	if not upgrade is NewAbility:
-		return
-	
-	var new_ability = upgrade as NewAbility
-	ability_manager.add_child(new_ability.new_ability_scene.instantiate())
+	if upgrade is NewAbility:
+		var new_ability = upgrade as NewAbility
+		ability_manager.add_child(new_ability.new_ability_scene.instantiate())
+	elif upgrade.id == "move_speed":
+		movement_component.max_speed = base_speed + \
+		(base_speed * current_upgrades["move_speed"]["quantity"] * 0.1)

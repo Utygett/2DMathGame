@@ -9,6 +9,7 @@ var upgrade_axe_rate = preload("res://resources/upgrades/axe_rate.tres")
 var upgrade_throw_axe = preload("res://resources/upgrades/throw_axe.tres")
 var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
 var upgrade_throw_axe_damage = preload("res://resources/upgrades/throw_axe_damage.tres")
+var upgrade_move_speed = preload("res://resources/upgrades/move_speed.tres")
 
 var cur_upgrdaes = {}
 
@@ -16,6 +17,7 @@ func _ready() -> void:
 	upgrade_pool.add_upgrade(upgrade_axe_rate, 10)
 	upgrade_pool.add_upgrade(upgrade_throw_axe, 10)
 	upgrade_pool.add_upgrade(upgrade_axe_damage, 10)
+	upgrade_pool.add_upgrade(upgrade_move_speed, 15)
 	exp_manager.level_up.connect(on_level_up)
 	
 	
