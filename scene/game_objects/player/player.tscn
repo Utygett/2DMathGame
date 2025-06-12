@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://88tsre480nut"]
+[gd_scene load_steps=29 format=3 uid="uid://88tsre480nut"]
 
 [ext_resource type="Script" uid="uid://bmbk6n3mbp5a0" path="res://scene/game_objects/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://bqlq3w1am4qv" path="res://scene/game_objects/player/Basic Charakter Spritesheet.png" id="1_v7pse"]
@@ -11,9 +11,6 @@
 resource_local_to_scene = true
 shader = ExtResource("5_4vals")
 shader_parameter/percent = 0.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qri3"]
-bg_color = Color(0.192157, 0.192157, 0.192157, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7mlt"]
 bg_color = Color(0.727184, 0.0842642, 0.157225, 0.670588)
@@ -210,7 +207,6 @@ offset_top = 2.0
 offset_right = 12.0
 offset_bottom = 6.0
 pivot_offset = Vector2(12, 2)
-theme_override_styles/background = SubResource("StyleBoxFlat_6qri3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c7mlt")
 max_value = 1.0
 value = 0.5
