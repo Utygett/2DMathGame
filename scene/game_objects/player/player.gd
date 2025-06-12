@@ -60,6 +60,7 @@ func on_died():
 	queue_free()
 
 func on_health_changed():
+	Global.player_damage.emit()
 	health_update()
 
 
