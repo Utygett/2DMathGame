@@ -1,7 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://0h7fafr3i0v4"]
+[gd_scene load_steps=14 format=3 uid="uid://0h7fafr3i0v4"]
 
 [ext_resource type="Script" uid="uid://bbsiaoo7fcn87" path="res://scene/components/death_component.gd" id="1_m7agx"]
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_xdsv3"]
+[ext_resource type="PackedScene" uid="uid://cd0wwkpfe8h66" path="res://scene/components/hit_sound_component.tscn" id="3_mh4ll"]
+[ext_resource type="AudioStream" uid="uid://ce2b00hllexx3" path="res://Assets/audio/death/dsbgdth1.mp3" id="4_3r8lf"]
+[ext_resource type="AudioStream" uid="uid://cpyxfu14tpuvb" path="res://Assets/audio/death/dsbgdth2.mp3" id="5_aom14"]
+[ext_resource type="AudioStream" uid="uid://dbn3y7mpx6l8v" path="res://Assets/audio/death/jg-032316-sfx-monster-footstep-1.mp3" id="6_c0cku"]
+
+[sub_resource type="Animation" id="Animation_m7agx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteOffest/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_xdsv3"]
 resource_name = "death"
@@ -33,21 +52,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_m7agx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteOffest/GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mh4ll"]
 _data = {
 &"RESET": SubResource("Animation_m7agx"),
@@ -71,6 +75,12 @@ angular_velocity_max = 141.13
 gravity = Vector3(0, 400, 0)
 alpha_curve = SubResource("CurveTexture_m7agx")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kpbi6"]
+streams_count = 3
+stream_0/stream = ExtResource("4_3r8lf")
+stream_1/stream = ExtResource("5_aom14")
+stream_2/stream = ExtResource("6_c0cku")
+
 [node name="DeathComponent" type="Node2D"]
 script = ExtResource("1_m7agx")
 
@@ -92,3 +102,8 @@ one_shot = true
 fixed_fps = 0
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_xdsv3")
+
+[node name="HitSoundComponent" parent="." instance=ExtResource("3_mh4ll")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_kpbi6")

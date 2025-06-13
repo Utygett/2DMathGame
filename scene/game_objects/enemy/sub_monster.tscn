@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://xrr7g0b7dy6e"]
+[gd_scene load_steps=27 format=3 uid="uid://xrr7g0b7dy6e"]
 
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_c5v5s"]
 [ext_resource type="PackedScene" uid="uid://0h7fafr3i0v4" path="res://scene/components/death_component.tscn" id="2_ybf61"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://fdttdhjblihx" path="res://Assets/sub_monster.png" id="7_1wffr"]
 [ext_resource type="PackedScene" uid="uid://brgg15ar3k7g4" path="res://scene/components/flash_component.tscn" id="7_ybf61"]
 [ext_resource type="Shader" uid="uid://d20q8d20cjds" path="res://scene/components/health_component.gdshader" id="8_fqpip"]
+[ext_resource type="PackedScene" uid="uid://cd0wwkpfe8h66" path="res://scene/components/hit_sound_component.tscn" id="9_fqpip"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3u6gk"]
 resource_local_to_scene = true
@@ -147,8 +148,11 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
 flash_material = SubResource("ShaderMaterial_3u6gk")
 
-[node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_7j8gy")]
+[node name="HitSoundComponent" parent="." instance=ExtResource("9_fqpip")]
+
+[node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component", "hit_sound_component") instance=ExtResource("6_7j8gy")]
 health_component = NodePath("../HealthComponent")
+hit_sound_component = NodePath("../HitSoundComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeartBoxComponent"]
 position = Vector2(0, -11)

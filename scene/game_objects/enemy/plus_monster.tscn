@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tt7okqdoytfq"]
+[gd_scene load_steps=19 format=3 uid="uid://tt7okqdoytfq"]
 
 [ext_resource type="Texture2D" uid="uid://b7ebuh1lhqk7y" path="res://scene/game_objects/enemy/plus.png" id="1_cq7eo"]
 [ext_resource type="Script" uid="uid://xedvbfwdbycj" path="res://scene/game_objects/enemy/plus_monster.gd" id="1_tpq12"]
@@ -10,7 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://c1qmoqwncan8" path="res://scene/components/heart_box_component.tscn" id="4_v7wnq"]
 [ext_resource type="PackedScene" uid="uid://c6r0tf6mkacwi" path="res://scene/components/health_component.tscn" id="6_4vnmi"]
 [ext_resource type="PackedScene" uid="uid://b367v2t7a8m7o" path="res://scene/components/movement_component.tscn" id="6_8esyc"]
+[ext_resource type="Shader" uid="uid://d20q8d20cjds" path="res://scene/components/health_component.gdshader" id="8_5hhd4"]
+[ext_resource type="PackedScene" uid="uid://cd0wwkpfe8h66" path="res://scene/components/hit_sound_component.tscn" id="9_q7ruo"]
 [ext_resource type="PackedScene" uid="uid://brgg15ar3k7g4" path="res://scene/components/flash_component.tscn" id="11_jisnx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3cwd"]
+resource_local_to_scene = true
+shader = ExtResource("8_5hhd4")
+shader_parameter/percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7wnq"]
 
@@ -93,9 +100,13 @@ health_component = NodePath("../HealthComponent")
 [node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_jisnx")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_c3cwd")
 
-[node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_v7wnq")]
+[node name="HitSoundComponent" parent="." instance=ExtResource("9_q7ruo")]
+
+[node name="HeartBoxComponent" parent="." node_paths=PackedStringArray("health_component", "hit_sound_component") instance=ExtResource("4_v7wnq")]
 health_component = NodePath("../HealthComponent")
+hit_sound_component = NodePath("../HitSoundComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeartBoxComponent"]
 position = Vector2(0, -11)

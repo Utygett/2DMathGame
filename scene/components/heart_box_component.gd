@@ -2,7 +2,7 @@ extends Area2D
 class_name HeartBoxComponent
 
 @export var health_component: HealthComponent
-
+@export var hit_sound_component: AudioStreamPlayer2D
 
 func _on_area_entered(area: Area2D) -> void:
 	if not area is HitBoxComponent:
@@ -12,3 +12,4 @@ func _on_area_entered(area: Area2D) -> void:
 	var hit_box_component = area as HitBoxComponent
 	
 	health_component.take_damage(hit_box_component.damage)
+	hit_sound_component.play()
