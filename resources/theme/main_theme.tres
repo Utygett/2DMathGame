@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://k1av5nwlqxr0"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://k1av5nwlqxr0"]
 
 [ext_resource type="Texture2D" uid="uid://bxl0rt4rqmfwm" path="res://Assets/button1.png" id="1_1ywy2"]
 [ext_resource type="Texture2D" uid="uid://deggnfgvs8loo" path="res://Assets/ui_panel.png" id="1_70gfe"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://liwmu26m52hh" path="res://Assets/button3.png" id="1_wif3f"]
 [ext_resource type="Texture2D" uid="uid://7mhsu07xoict" path="res://Assets/ui_panel2.png" id="2_jtx1y"]
 [ext_resource type="Texture2D" uid="uid://bm06tb8ji4n21" path="res://Assets/button2.png" id="3_qmhhu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wif3f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0exeo"]
 texture = ExtResource("1_wif3f")
@@ -57,6 +59,7 @@ default_font = ExtResource("1_rjbnf")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0.1271, 0.108142, 0.0646544, 1)
 Button/constants/outline_size = 4
+Button/styles/focus = SubResource("StyleBoxEmpty_wif3f")
 Button/styles/hover = SubResource("StyleBoxTexture_0exeo")
 Button/styles/normal = SubResource("StyleBoxTexture_kh2cq")
 Button/styles/pressed = SubResource("StyleBoxTexture_8yoe2")

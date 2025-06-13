@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.166667, 0.4),
 "transitions": PackedFloat32Array(1, 2.54912, 1),
 "update": 0,
-"values": [Vector2(1.05, 1.05), Vector2(1.2, 1.2), Vector2(1.00136e-05, 1.00136e-05)]
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -135,8 +135,8 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.192157, 0.192157, 0.192157, 1)
 
-[node name="MetaUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
-custom_minimum_size = Vector2(100, 200)
+[node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
+custom_minimum_size = Vector2(120, 200)
 pivot_offset = Vector2(65, 88.5)
 script = ExtResource("1_2bbu0")
 
@@ -190,7 +190,8 @@ size_flags_vertical = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "50 / 200"
 
@@ -199,6 +200,7 @@ layout_mode = 2
 texture = ExtResource("2_7p2bn")
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_gnjlp")
 max_value = 1.0
@@ -206,6 +208,7 @@ value = 0.5
 show_percentage = false
 
 [node name="PurchaseButton" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_gnjlp")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Purchase
 "
@@ -213,3 +216,4 @@ text = "Purchase
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]
