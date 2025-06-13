@@ -1,34 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmd5dmy3f7qo7"]
+[gd_scene load_steps=14 format=3 uid="uid://bmd5dmy3f7qo7"]
 
 [ext_resource type="Script" uid="uid://drlmdg25vpfej" path="res://scene/ui/ability_upgrade_card.gd" id="1_jqc82"]
-
-[sub_resource type="Animation" id="Animation_jqc82"]
-resource_name = "in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[ext_resource type="AudioStream" uid="uid://b0kd4pxgcwasy" path="res://Assets/audio/clicks/click1.ogg" id="2_fhs3w"]
+[ext_resource type="AudioStream" uid="uid://tp0632nw8pd2" path="res://Assets/audio/clicks/click4.ogg" id="3_taihr"]
+[ext_resource type="AudioStream" uid="uid://nk0hboj8dt5c" path="res://Assets/audio/clicks/click5.ogg" id="4_ic5go"]
+[ext_resource type="AudioStream" uid="uid://b07184hyq6alx" path="res://Assets/audio/clicks/click2.ogg" id="5_q7ea3"]
+[ext_resource type="AudioStream" uid="uid://ce36c28877o23" path="res://Assets/audio/clicks/click3.ogg" id="6_finig"]
 
 [sub_resource type="Animation" id="Animation_6d8ap"]
 length = 0.001
@@ -69,6 +46,50 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_vwxxn"]
+resource_name = "discard"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.05, 1.05), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jqc82"]
+resource_name = "in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_30y8a"]
 resource_name = "selected"
 length = 0.4
@@ -97,22 +118,6 @@ tracks/1/keys = {
 "values": [0.0, -0.0349066, 0.0, 0.0349066, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_vwxxn"]
-resource_name = "discard"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.05, 1.05), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_30y8a"]
 _data = {
 &"RESET": SubResource("Animation_6d8ap"),
@@ -120,6 +125,19 @@ _data = {
 &"in": SubResource("Animation_jqc82"),
 &"selected": SubResource("Animation_30y8a")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_genna"]
+random_pitch = 2.25
+streams_count = 1
+stream_0/stream = ExtResource("2_fhs3w")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_il6nv"]
+streams_count = 5
+stream_0/stream = ExtResource("3_taihr")
+stream_1/stream = ExtResource("4_ic5go")
+stream_2/stream = ExtResource("2_fhs3w")
+stream_3/stream = ExtResource("5_q7ea3")
+stream_4/stream = ExtResource("6_finig")
 
 [node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
 custom_minimum_size = Vector2(100, 150)
@@ -168,6 +186,15 @@ theme_override_colors/font_outline_color = Color(0.4, 0.223529, 0.192157, 1)
 theme_override_constants/outline_size = 4
 text = "Decription of the current card"
 autowrap_mode = 2
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_genna")
+pitch_scale = 0.15
+bus = &"SFX"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_il6nv")
+bus = &"SFX"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

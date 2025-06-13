@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm4csa3tqaly"]
+
+[ext_resource type="AudioStream" uid="uid://babbqnel5gdmv" path="res://Assets/audio/bgm/bgm1.mp3" id="1_xf1wb"]
+[ext_resource type="AudioStream" uid="uid://s155jch1a27a" path="res://Assets/audio/bgm/bgm2.mp3" id="2_4iekl"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_luxy6"]
+streams_count = 2
+stream_0/stream = ExtResource("1_xf1wb")
+stream_1/stream = ExtResource("2_4iekl")
+
+[node name="bgm" type="AudioStreamPlayer"]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_luxy6")
+volume_db = -16.95
+autoplay = true
+bus = &"Music"
+playback_type = 1

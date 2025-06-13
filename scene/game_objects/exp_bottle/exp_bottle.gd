@@ -2,6 +2,7 @@ extends Node2D
 
 var bottle_exp = 1
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func tween_exp_bottle(percent:float, start_position:Vector2):
 	var player = get_tree().get_first_node_in_group("player") as Node2D
@@ -36,4 +37,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var tween = create_tween()
 	tween.tween_method(tween_exp_bottle.bind(global_position), 0.0, 1.0, 0.3)\
 	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	audio_stream_player_2d.play()
 	tween.tween_callback(exp_collected)
