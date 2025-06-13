@@ -107,3 +107,4 @@ process_material = SubResource("ParticleProcessMaterial_xdsv3")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_kpbi6")
 volume_db = -7.77
+bus = &"SFX"
