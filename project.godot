@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2dMath"
-run/main_scene="uid://bmu76r8k1gj0q"
+run/main_scene="uid://bkdagrm31lakp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
