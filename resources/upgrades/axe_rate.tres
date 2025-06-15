@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_6t6ff")
 id = "axe_rate"
-max_quantity = 10
+max_quantity = 8
 name = "Axe Speed"
 description = "Inscreases axe attack speed by 10%"

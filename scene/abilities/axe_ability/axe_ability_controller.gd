@@ -22,4 +22,4 @@ func _on_timer_timeout() -> void:
 
 func on_upgrade_added(upgrade:AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "throw_axe_damage":
-		damage_multiplier = 1 + (current_upgrades["throw_axe_damage"]["quantity"] * 0.12)
+		damage_multiplier += (current_upgrades["throw_axe_damage"]["quantity"] * 0.12)

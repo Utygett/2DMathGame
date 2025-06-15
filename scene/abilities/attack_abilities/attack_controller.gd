@@ -52,4 +52,4 @@ func on_upgrade_added(upgrade:AbilityUpgrade, current_upgrades: Dictionary):
 		timer.wait_time = max(s_default_attack_speed * (1 - upgrade_percent), 0.1)
 		timer.start()
 	elif upgrade.id == "axe_damage":
-		s_damage_multiplier = 1 + (current_upgrades["axe_damage"]["quantity"] * 0.15)
+		s_damage_multiplier += (current_upgrades["axe_damage"]["quantity"] * 0.15)

@@ -6,9 +6,10 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movement_component: Node = $MovementComponent
 
-	
+
 var enemies_colliding = 0
 var base_speed = 0
+var enemy_damage: int = 0
 
 func _ready() -> void:
 	base_speed = movement_component.max_speed
@@ -43,10 +44,11 @@ func movement_vector():
 func check_if_damage():
 	if enemies_colliding == 0 || !grace_period.is_stopped():
 		return
-	health_component.take_damage(1)
+	health_component.take_damage(enemy_damage)
 	grace_period.start()
 
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
+	enemy_damage = area.enemy_damage()
 	enemies_colliding += 1
 	check_if_damage()
 

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://brgg15ar3k7g4" path="res://scene/components/flash_component.tscn" id="7_ybf61"]
 [ext_resource type="Shader" uid="uid://d20q8d20cjds" path="res://scene/components/health_component.gdshader" id="8_fqpip"]
 [ext_resource type="PackedScene" uid="uid://cd0wwkpfe8h66" path="res://scene/components/hit_sound_component.tscn" id="9_fqpip"]
+[ext_resource type="PackedScene" uid="uid://csk0c8rewvw5y" path="res://scene/components/enemy_hit_box_component.tscn" id="12_3u6gk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3u6gk"]
 resource_local_to_scene = true
@@ -125,8 +126,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybf61"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fqpip"]
-
 [node name="SubMonster" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
@@ -172,10 +171,5 @@ position = Vector2(0, -7)
 scale = Vector2(0.775783, 0.737324)
 shape = SubResource("CircleShape2D_ybf61")
 
-[node name="EnemyHitBox" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_fqpip")
+[node name="EnemyHitBoxComponent" parent="." instance=ExtResource("12_3u6gk")]
+damage = 2

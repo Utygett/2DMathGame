@@ -5,6 +5,7 @@ extends Node
 @export var plus_monster_scene: PackedScene
 @export var arena_time_manager: ArenaTimerManager
 @export var sub_monster_scene: PackedScene
+@export var soldier_monster_scene: PackedScene
 
 var base_spawn_time
 var min_spawn_time = 0.2
@@ -24,8 +25,10 @@ func get_spawn_position():
 	var random_distance = randi_range(300, 500)
 	for i in 4:
 		spawn_pos = player.global_position + (random_direction * random_distance)
+		var ray_extender  = random_direction * 20
 		#Пересечение луча 2д
-		var raycast = PhysicsRayQueryParameters2D.create(player.global_position, spawn_pos, 1)
+		var raycast = PhysicsRayQueryParameters2D\
+		.create(player.global_position, spawn_pos + ray_extender, 1)
 		var intersection = get_tree().root.world_2d.direct_space_state.intersect_ray(raycast)
 		if intersection.is_empty():
 			break
@@ -47,5 +50,7 @@ func _on_timer_timeout() -> void:
 func on_difficulty_increased(difficulty_level:int):
 	var new_spawn_time = max(base_spawn_time - (difficulty_level * difficulty_multiplier), min_spawn_time)
 	timer.wait_time = new_spawn_time
-	if difficulty_level == 1:
+	if difficulty_level == 2:
 			enemy_pool.add_mob(sub_monster_scene, 10)
+	elif difficulty_level == 4:
+			enemy_pool.add_mob(soldier_monster_scene, 5)

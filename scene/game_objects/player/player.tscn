@@ -198,6 +198,7 @@ script = ExtResource("1_cm2cf")
 [node name="AttackController" parent="AbilityManager" instance=ExtResource("2_6smn3")]
 
 [node name="GracePeriod" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_6qri3")]
