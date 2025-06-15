@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://rplo4s17dq7w"]
+[gd_scene load_steps=7 format=4 uid="uid://rplo4s17dq7w"]
 
 [ext_resource type="Script" uid="uid://dapf0l8bbf48j" path="res://scene/ui/meta_menu.gd" id="1_o6upt"]
 [ext_resource type="Script" uid="uid://b2sudigkbgdbi" path="res://resources/meta_upgrades/meta_upgrades.gd" id="2_6ce3e"]
 [ext_resource type="PackedScene" uid="uid://dpl243gwdnuln" path="res://scene/ui/vignette.tscn" id="2_huacs"]
 [ext_resource type="TileSet" uid="uid://duusb0104ywfi" path="res://resources/green_tile_set.tres" id="3_6ce3e"]
 [ext_resource type="Resource" uid="uid://b72u2bbvghlbi" path="res://resources/meta_upgrades/experience_drop_chance.tres" id="3_7ehty"]
-[ext_resource type="PackedScene" uid="uid://cfkm2ec54g7cc" path="res://scene/ui/meta_upgrade_card.tscn" id="6_6ce3e"]
 [ext_resource type="PackedScene" uid="uid://cptl12bm6nu58" path="res://scene/ui/sound_button.tscn" id="7_7ehty"]
 
 [node name="MetaMenu" type="CanvasLayer"]
@@ -43,18 +42,6 @@ size_flags_horizontal = 4
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 2
-
-[node name="MetaUpgradeCard" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_6ce3e")]
-layout_mode = 2
-
-[node name="MetaUpgradeCard2" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_6ce3e")]
-layout_mode = 2
-
-[node name="MetaUpgradeCard3" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_6ce3e")]
-layout_mode = 2
-
-[node name="MetaUpgradeCard4" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_6ce3e")]
-layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
