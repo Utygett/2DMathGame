@@ -7,6 +7,8 @@ class_name MetaUpgradeCard
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var purchase_button: Button = %PurchaseButton
 @onready var progress_label: Label = %ProgressLabel
+@onready var quantity_label: Label = %QuantityLabel
+
 
 var s_upgrade:MetaUpgrade
 
@@ -17,12 +19,17 @@ func set_meta_upgrade(upgrade:MetaUpgrade):
 	update_progress()
 
 func update_progress():
+	var quantity = MetaProgression.get_upgrade_quantity(s_upgrade.id)
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	var percent = currency / s_upgrade.cost
+	var is_maxed = quantity >= s_upgrade.max_quantity
 	percent = min(percent, 1)
 	progress_bar.value = percent
-	purchase_button.disabled = percent < 1
+	purchase_button.disabled = percent < 1 || is_maxed
+	if is_maxed:
+		purchase_button.text = "Max"
 	progress_label.text = str(currency as int) + " / " + str(s_upgrade.cost)
+	quantity_label.text = "x" + str(quantity)
 
 
 func _on_purchase_button_pressed() -> void:

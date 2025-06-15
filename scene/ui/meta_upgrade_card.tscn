@@ -136,7 +136,7 @@ border_width_bottom = 2
 border_color = Color(0.192157, 0.192157, 0.192157, 1)
 
 [node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
-custom_minimum_size = Vector2(120, 200)
+custom_minimum_size = Vector2(150, 200)
 pivot_offset = Vector2(65, 88.5)
 script = ExtResource("1_2bbu0")
 
@@ -198,6 +198,13 @@ text = "50 / 200"
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_7p2bn")
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "x0"
+horizontal_alignment = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

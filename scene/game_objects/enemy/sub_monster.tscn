@@ -138,6 +138,7 @@ sprite = ExtResource("3_1wffr")
 
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_ccmox")]
 health_component = NodePath("../HealthComponent")
+drop_percent = 0.4
 
 [node name="MovementComponent" parent="." instance=ExtResource("6_k4k16")]
 max_speed = 500

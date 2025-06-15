@@ -53,6 +53,10 @@ layout_mode = 2
 text = "Play
 "
 
+[node name="UpgradeButton" parent="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2" instance=ExtResource("1_s6uko")]
+layout_mode = 2
+text = "Upgrades"
+
 [node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2" instance=ExtResource("1_s6uko")]
 layout_mode = 2
 text = "Options
@@ -63,5 +67,6 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

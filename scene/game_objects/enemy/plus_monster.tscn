@@ -94,6 +94,7 @@ sprite = ExtResource("1_cq7eo")
 
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_igcb5")]
 health_component = NodePath("../HealthComponent")
+drop_percent = 0.2
 
 [node name="MovementComponent" parent="." instance=ExtResource("6_8esyc")]
 
