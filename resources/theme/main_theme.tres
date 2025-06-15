@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://k1av5nwlqxr0"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://k1av5nwlqxr0"]
 
 [ext_resource type="Texture2D" uid="uid://bxl0rt4rqmfwm" path="res://Assets/button1.png" id="1_1ywy2"]
 [ext_resource type="Texture2D" uid="uid://deggnfgvs8loo" path="res://Assets/ui_panel.png" id="1_70gfe"]
@@ -54,6 +54,29 @@ region_rect = Rect2(16, 17, 32, 31)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qri3"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wif3f"]
+bg_color = Color(0.830802, 0.518057, 0.148612, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0exeo"]
+bg_color = Color(0.830802, 0.518057, 0.148612, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yoe2"]
+bg_color = Color(0.830802, 0.518057, 0.148612, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmhhu"]
+border_width_left = 4
+border_width_right = 4
+border_color = Color(0.321878, 0.188157, 0.0215351, 1)
+
 [resource]
 default_font = ExtResource("1_rjbnf")
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -69,3 +92,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxTexture_jtx1y")
 PanelContainer2/base_type = &"PanelContainer"
 PanelContainer2/styles/panel = SubResource("StyleBoxTexture_1ywy2")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_6qri3")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_wif3f")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_0exeo")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_8yoe2")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_qmhhu")
